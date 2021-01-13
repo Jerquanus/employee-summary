@@ -5,6 +5,8 @@ class Employee {
             this.name = name;
             this.id = id;
             this.email = email;
+            this.Employee = Employee;
+            
             
         }   
 
@@ -18,14 +20,26 @@ class Employee {
 
         getEmail(){
             return this.email
-        }
-    
+        }   
+
         getRole(){
             return this.Employee
         }
-                
-    }
 
+
+}
+
+// class getRole extends Employee{
+//     constructor(role){
+//         this.role = role;
+//     }
+
+//     super(role, Employee);
+// }
+
+
+
+   
     
 
 
