@@ -1,11 +1,11 @@
 // TODO: Write code to define and export the Employee class
 
 class Employee {
-        constructor(name, id, email, role){
+        constructor(name, id, email){
             this.name = name;
             this.id = id;
             this.email = email;
-            this.role = role; 
+        
         }   
 
         getName(){
@@ -21,8 +21,7 @@ class Employee {
         }   
 
         getRole(){
-            const employee = new Employee('employee');
-            return this.role
+            return "Employee"
         }
 
     
@@ -42,6 +41,7 @@ module.exports = Employee
 
 
 
+// Below are notes from tutoring session
 
 // npm run test-employee
 
