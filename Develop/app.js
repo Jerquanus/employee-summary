@@ -79,6 +79,35 @@ employeeType = () => {
                         }
                     })
             }
+            // ------------- Intern Questions -----------
+            if (data.role === "Intern") {
+                inquirer.prompt([{
+                    type: "input",
+                    name: "school",
+                    message: "What school did the intern attend?"
+                },
+                {
+                    type: "list",
+                    name: "addmore",
+                    message: "Would you like to add another employee?",
+                    choices: [
+                        "yes",
+                        "no"
+                    ]
+                }])
+                    .then(function (internData) {
+                        const intern = new Intern(data.name, data.id, data.email, internData.school)
+                        employeeList.push(intern);
+
+                        if (internData.addmore === "yes") {
+                            employeeType();
+                        }
+                        if (internData.addmore === "no") {
+                            fs.writeFileSync('renderEmployee/myTeam.html', render(employeeList));
+                        }
+                    })
+            }
+
 
 
         })
