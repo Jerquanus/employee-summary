@@ -46,7 +46,44 @@ const questions = [
 
 const employeeList = [];
 
+employeeType = () => {
+    inquirer.prompt(questions)
+        .then(function (data) {
+            console.log(data);
 
+            // ------------- Engineer Questions -----------
+            if (data.role === "Engineer") {
+                inquirer.prompt([{
+                    type: "input",
+                    name: "github",
+                    message: "What is your Engineer's github?"
+                },
+                {
+                    type: "list",
+                    name: "addmore",
+                    message: "Would you like to add another employee?",
+                    choices: [
+                        "yes",
+                        "no"
+                    ]
+                }])
+                    .then(function (engineerData) {
+                        const engineer = new Engineer(data.name, data.id, data.email, engineerData.github)
+                        employeeList.push(engineer);
+
+                        if (engineerData.addmore === "yes") {
+                            employeeType();
+                        }
+                        if (engineerData.addmore === "no") {
+                            fs.writeFileSync('renderEmployee/myTeam.html', render(employeeList));
+                        }
+                    })
+            }
+
+
+        })
+}
+employeeType();
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
