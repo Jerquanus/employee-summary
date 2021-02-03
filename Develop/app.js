@@ -60,7 +60,7 @@ employeeType = () => {
                 },
                 {
                     type: "list",
-                    name: "addmore",
+                    name: "addanother",
                     message: "Would you like to add another employee?",
                     choices: [
                         "yes",
@@ -71,11 +71,11 @@ employeeType = () => {
                         const engineer = new Engineer(data.name, data.id, data.email, engineerData.github)
                         employeeList.push(engineer);
 
-                        if (engineerData.addmore === "yes") {
+                        if (engineerData.addanother === "yes") {
                             employeeType();
                         }
-                        if (engineerData.addmore === "no") {
-                            fs.writeFileSync('renderEmployee/myTeam.html', render(employeeList));
+                        if (engineerData.addanother === "no") {
+                            fs.writeFileSync('renderEmployee/main.html', render(employeeList));
                         }
                     })
             }
@@ -88,7 +88,7 @@ employeeType = () => {
                 },
                 {
                     type: "list",
-                    name: "addmore",
+                    name: "addanother",
                     message: "Would you like to add another employee?",
                     choices: [
                         "yes",
@@ -99,11 +99,11 @@ employeeType = () => {
                         const intern = new Intern(data.name, data.id, data.email, internData.school)
                         employeeList.push(intern);
 
-                        if (internData.addmore === "yes") {
+                        if (internData.addanother === "yes") {
                             employeeType();
                         }
-                        if (internData.addmore === "no") {
-                            fs.writeFileSync('renderEmployee/myTeam.html', render(employeeList));
+                        if (internData.addanother === "no") {
+                            fs.writeFileSync('renderEmployee/main.html', render(employeeList));
                         }
                     })
             }
@@ -127,11 +127,11 @@ employeeType = () => {
                         const manager = new Manager(data.name, data.id, data.email, managerData.office)
                         employeeList.push(manager);
 
-                        if (managerData.addmore === "yes") {
+                        if (managerData.addanother === "yes") {
                             employeeType();
                         }
-                        if (managerData.addmore === "no") {
-                            fs.writeFileSync('renderEmployee/myTeam.html', render(employeeList));
+                        if (managerData.addanother === "no") {
+                            fs.writeFileSync('renderEmployee/main.html', render(employeeList));
                         }
 
                     })
