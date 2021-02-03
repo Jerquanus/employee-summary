@@ -107,7 +107,35 @@ employeeType = () => {
                         }
                     })
             }
+            // ------------- Manager Questions -----------
+            if (data.role === "Manager") {
+                inquirer.prompt([{
+                    type: "input",
+                    name: "office",
+                    message: "What is the manager's office number?"
+                },
+                {
+                    type: "list",
+                    name: "addanother",
+                    message: "Would you like to add another employee?",
+                    choices: [
+                        "yes",
+                        "no"
+                    ]
+                }])
+                    .then(function (managerData) {
+                        const manager = new Manager(data.name, data.id, data.email, managerData.office)
+                        employeeList.push(manager);
 
+                        if (managerData.addmore === "yes") {
+                            employeeType();
+                        }
+                        if (managerData.addmore === "no") {
+                            fs.writeFileSync('renderEmployee/myTeam.html', render(employeeList));
+                        }
+
+                    })
+            }
 
 
         })
