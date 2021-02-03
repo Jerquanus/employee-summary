@@ -1,4 +1,4 @@
-# employee-summary
+# Employee Summary Application
 
 ## Installation:
    open the folder develop folder. 
